@@ -1,0 +1,157 @@
+激活您的虚拟环境 source venv/bin/activate   
+在激活的虚拟环境中何时工作。激活脚本会在命令提示符前添加激活的虚拟环境的名称（用括号括起来）
+deactivate命令退出活动的虚拟环境
+
+"{}".format()：该.format()方法可让您{}在字符串中插入已命名或未命名的占位符，然后使用该.format()方法将值插入到这些占位符中。
+"".split()：使用该.split()方法，您可以使用作为分隔符提供的分隔符将一个字符串分成多个字符串。
+"".join()：使用该.join()方法，您可以使用一系列字符串，并使用您提供的分隔符将它们连接起来。
+例子：
+>>> "Hi, my name is {}!".format("Chris")
+'Hi, my name is Chris!'
+
+>>> "Hi, my name is {name}, and I am a {what}!".format(name="Bob", what="coder")
+'Hi, my name is Bob, and I am a coder!'
+
+>>> "a b c".split(" ")
+['a', 'b', 'c']
+
+>>> ",".join(['a', 'b', 'c'])
+'a,b,c'
+
+获取输入
+需要提示用户一些信息吗？使用input()功能。它将向用户显示提示并返回他们的输入，您可以将其分配给变量。
+
+>>> answer = input("What is the air-speed velocity of an unladen swallow? ")
+What is the air-speed velocity of an unladen swallow? Huh? I... I don't know that.
+>>> answer
+'Huh? I... I don't know that.'
+
+Python if语法：
+
+if expression_1:
+    statements…
+elif expression_2:
+    statements…
+else:
+    statements…
+
+比较运算符和逻辑表达式
+比较运算符	含义
+<	少于
+>	比...更棒
+<=	小于或等于
+> =	大于或等于
+==	等于
+!=	不等于
+在	包含元素
+
+
+您可以使用and或组合表达式or。用取反表达式not。
+
+例：
+
+>>> n = 5
+>>> if n < 5:
+...     print("n is less than five")
+... elif n == 5:
+...     print("n is equal to five")
+... else:
+...     print("n is greater than five")
+...
+n is equal to five
+
+>>> from collections import OrderedDict
+>>> od = OrderedDict()
+>>> od["apples"] = 5
+>>> od["pears"] = 2
+>>> od["oranges"] = 9
+>>>
+>>> od["pears"]
+2
+>>> od["bananas"] = 12
+>>> od
+OrderedDict([('apples', 5), ('pears', 2), ('oranges', 9), ('bananas', 12)])
+
+>>> for i in range(5):
+...     print(i)
+...
+0
+1
+2
+3
+4
+
+可以通过明智地选择变量名称来使代码可读：
+
+>>> names = ["chris", "iftach", "jay"]
+>>> for name in names:
+...     print(name)
+...
+chris
+iftach
+jay
+
+
+>>> list(fruit_inventory.items())
+[('oranges', 9), ('apples', 5), ('pears', 2)]
+>>> for fruit in fruit_inventory.items():
+...     print(fruit)
+...
+('oranges', 9)
+('apples', 5)
+('pears', 2)
+
+
+Python具有一项功能，您可以在其中将项目集合分配给变量集合-这称为拆包。
+
+>>> a, b, c = [1, 2, 3]
+>>> a
+1
+>>> b
+2
+>>> c
+3
+
+我们可以使用unpacking (key, value)将.items()方法返回的元组解压缩成我们选择的变量名。
+
+>>> for fruit, quantity in fruit_inventory.items():
+...     print("You have {} {}.".format(quantity, fruit))
+...
+You have 5 apples.
+You have 2 pears.
+You have 9 oranges.
+
+
+
+
+
+
+
+
+API 程序接口可以被调用，可以被继承到别的应用程序；
+RestFul API ：URL、资源具有标识符、无状态（不建立握手及连接）
+
+POST ：Creat对象
+GRT ：Read对象
+PUT ： 更新及替换对象
+PATH ： 更新对象
+DELETE ： 删除对象
+
+
+
+1xx  信息
+2xx 成功
+3xx 重定向
+4xx 客户端错误 401 权限不够
+5xx 服务器错误
+
+
+
+基于意图的API：
+Discovery：设备发现
+Inventory：设备硬件信息
+Pnp：plug and play
+SWIM：镜像上传
+Config Tem ：配置模板
+
+
