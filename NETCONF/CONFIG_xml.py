@@ -3,7 +3,7 @@ CONFIG0 = """
       <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
         <interface>
           <Loopback>
-            <name>103</name>
+            <name>104</name>
             <description>loopback1-test</description>
             <ip>
               <address>
