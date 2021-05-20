@@ -8,7 +8,7 @@ CONFIG0 = """
             <ip>
               <address>
                 <primary>
-                  <address>1.1.1.10</address>
+                  <address>44.44.44.44</address>
                   <mask>255.255.255.255</mask>
                 </primary>
               </address>
