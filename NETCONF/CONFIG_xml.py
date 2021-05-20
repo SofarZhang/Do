@@ -1,14 +1,17 @@
-CONFIG0 = """
+CONFIG0 = """<edit-config>
+    <target>
+      <running/>
+    </target>
     <config>
       <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
         <interface>
           <Loopback>
-            <name>104</name>
-            <description>loopback1-test</description>
+            <name>111</name>
+            <description>111-test</description>
             <ip>
               <address>
                 <primary>
-                  <address>44.44.44.44</address>
+                  <address>77.77.77.77</address>
                   <mask>255.255.255.255</mask>
                 </primary>
               </address>
@@ -17,4 +20,5 @@ CONFIG0 = """
         </interface>
       </native>
     </config>
+  </edit-config>
 """
