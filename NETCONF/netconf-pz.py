@@ -1,20 +1,21 @@
+
 from ncclient import manager
 
 
 def netconf_connect(host_ip,params,port=830,user='admin',password='admin'):
-    x = manager.connect(host = host_ip,
-                        port = port,
-                        username = user,
+    x = manager.connect(host=host_ip,
+                        port=port,
+                        username=user,
                         password=password,
                         hostkey_verify=False,
                         device_params={'name':params},
-                        allow_agent = False,
-                        look_for_keys =False)
+                        allow_agent=False,
+                        look_for_keys=False)
     return x
 
 if __name__ == '__main__':
     from DeviceList import devicelist
-    from test import *
+    from CONFIG_xml import *
 
     for i in range(len(devicelist)):
         device_name = devicelist[i]['name']
@@ -26,11 +27,8 @@ if __name__ == '__main__':
 
         if device_params == 'csr':
             CONFIG = [CONFIG0]
-
+        elif device_params == 'huawei':
+            CONFIG = [CONFIG1]
         m = netconf_connect(device_ip,device_params,device_port,device_username,device_password)
-
         for CONFIG_final in CONFIG:
-            m.edit_config(config=CONFIG_final,target='running')
-
-
-
+            m.edit_config(target='running', config=CONFIG_final)
