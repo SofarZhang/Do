@@ -3,12 +3,12 @@ CONFIG0 = """
       <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
         <interface>
           <Loopback>
-            <name>111</name>
-            <description>111-test</description>
+            <name>0</name>
+            <description>ospf-RID</description>
             <ip>
               <address>
                 <primary>
-                  <address>77.77.77.77</address>
+                  <address>1.1.1.1</address>
                   <mask>255.255.255.255</mask>
                 </primary>
               </address>
@@ -23,12 +23,12 @@ CONFIG1 = """
       <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
         <interface>
           <Loopback>
-            <name>111</name>
-            <description>111-test</description>
+            <name>0</name>
+            <description>ospf-RID</description>
             <ip>
               <address>
                 <primary>
-                  <address>88.88.88.88</address>
+                  <address>2.2.2.2</address>
                   <mask>255.255.255.255</mask>
                 </primary>
               </address>
