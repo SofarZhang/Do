@@ -25,9 +25,12 @@ if __name__ == '__main__':
         device_params = devicelist[i]['params']
 
         if device_name == 'csr-1':
-            CONFIG = [CONFIG0]
+            CONFIG = [CONFIG0,CONFIG2,CONFIG4]
         elif device_name == 'csr-2':
-            CONFIG = [CONFIG1]
+            CONFIG = [CONFIG1,CONFIG3,CONFIG4]
         m = netconf_connect(device_ip,device_params,device_port,device_username,device_password)
         for CONFIG_final in CONFIG:
             m.edit_config(target='running', config=CONFIG_final)
+
+
+
