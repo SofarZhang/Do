@@ -64,7 +64,7 @@ CONFIG3 = """ <config>
       </native>
     </config>
 """
-# 配置G1和L1的ospf
+# 配置csr-1G1和L1的ospf
 CONFIG4 = """     <config>
       <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
         <interface>
@@ -76,7 +76,44 @@ CONFIG4 = """     <config>
                   <id>1</id>
                   <area>0</area>
                 </process-id>
+                <priority>100</priority>
+                <network>broadcast</network>
+              </ospf>
+            </ip>
+          </GigabitEthernet>
+          <Loopback>
+            <name>0</name>
+            <ip>
+              <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
+                <process-id>
+                  <id>1</id>
+                  <area>0</area>
+                </process-id>
+                <network>broadcast</network>
+                <priority>90</priority>
                 <network>point-to-point</network>
+              </ospf>
+            </ip>
+          </Loopback>
+        </interface>
+      </native>
+    </config>
+"""
+# 配置csr-2G1和L1的ospf
+CONFIG5 = """     <config>
+      <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+        <interface>
+          <GigabitEthernet>
+            <name>1</name>
+            <ip>
+              <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
+                <process-id>
+                  <id>1</id>
+                  <area>0</area>
+                </process-id>
+                <network>broadcast</network>
+                <priority>90</priority>
+                <network>broadcast</network>
               </ospf>
             </ip>
           </GigabitEthernet>
