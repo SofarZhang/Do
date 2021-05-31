@@ -1,8 +1,20 @@
+#解释器版本：python3.8
+# 学员：张海燕
+# Github：Sofar_zhang
+
+import ntpath
+import re
 from ncclient import manager
 import xml.etree.ElementTree as ET
 import  sys
 import  ipaddress
+from prettytable import PrettyTable
 
+import time
+current_time = time.asctime( time.localtime(time.time()) )
+
+
+print(current_time)
 
 devicelist = [
     {'name':'csr1000v-1','ip':'10.1.1.171','netconf_port':'830','username':'admin','password':'admin',
@@ -81,13 +93,20 @@ if __name__ == '__main__':
             RID = ipaddress.IPv4Address(int(tag_text))#IP10进制转换点分十进制
         else:
             RID = tag_text
-        print("RID:",RID)
+        # print("RID:",RID)
 
         if tag_text1.find('.') == -1:
-            RID = ipaddress.IPv4Address(int(tag_text))#IP10进制转换点分十进制
+            RID1 = ipaddress.IPv4Address(int(tag_text))#IP10进制转换点分十进制
         else:
-            RID = tag_text1
-        print("接口IP为：",RID)
+            RID1 = tag_text1
+        # print("接口IP为：",RID)
+        x = PrettyTable(field_names=["ip", "name", "RID", "neighbor_interface_address"])
+        x.add_row([device_ip, device_name, RID, RID1])
+        print(x)
+
+
+        with open("{}_".format(device_ip) + current_time + ".txt","w") as f:
+            f.write(str(x))
 
 
 
@@ -98,8 +117,13 @@ if __name__ == '__main__':
         # print(PEER_RID)
 
         #以当前元素为根的树迭代器
+        # list=[]
         # for i in status.iter():
-        #     print(i.tag)
+        #   print(i.tag)
+
+        # print(list)
+
+
 
 
 
