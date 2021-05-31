@@ -1,6 +1,6 @@
 #解释器版本：python3.8
 # 学员：张海燕
-# Github：Sofar_zhang
+# Github：SofarZhang
 
 import ntpath
 import re
