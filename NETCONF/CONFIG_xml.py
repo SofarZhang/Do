@@ -1,14 +1,15 @@
+# 配置csr-1loopback0ip地址
 CONFIG0 = """
        <config>
       <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
         <interface>
           <Loopback>
-            <name>111</name>
-            <description>111-test</description>
+            <name>0</name>
+            <description>ospf-RID</description>
             <ip>
               <address>
                 <primary>
-                  <address>77.77.77.77</address>
+                  <address>1.1.1.1</address>
                   <mask>255.255.255.255</mask>
                 </primary>
               </address>
@@ -18,27 +19,117 @@ CONFIG0 = """
       </native>
     </config>
 """
+# 配置csr-2loopback0ip地址
 CONFIG1 = """
-<?xml version="1.0" encoding="utf-8"?>
-<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="5">
-  <edit-config>
-    <target>
-      <running/>
-    </target>
-    <config>
-      <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
+       <config>
+      <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
         <interface>
-          <name>Eth-Trunk1</name>
-          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
-          <ip:ipv4 xmlns:ip="urn:ietf:params:xml:ns:yang:ietf-ip">
-            <ip:address nc:operation="create" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
-              <ip:ip>192.168.2.1</ip:ip>
-              <ip:prefix-length>24</ip:prefix-length>
-            </ip:address>
-          </ip:ipv4>
+          <Loopback>
+            <name>0</name>
+            <description>ospf-RID</description>
+            <ip>
+              <address>
+                <primary>
+                  <address>2.2.2.2</address>
+                  <mask>255.255.255.255</mask>
+                </primary>
+              </address>
+            </ip>
+          </Loopback>
         </interface>
-      </interfaces>
+      </native>
     </config>
-  </edit-config>
-</rpc>
+"""
+#csr-1配置ospf
+CONFIG2 = """ <config>
+      <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+        <router>
+          <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
+            <id>1</id>
+            <router-id>1.1.1.1</router-id>
+          </ospf>
+        </router>
+      </native>
+    </config>
+"""
+#csr-2配置ospf
+CONFIG3 = """ <config>
+      <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+        <router>
+          <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
+            <id>1</id>
+            <router-id>2.2.2.2</router-id>
+          </ospf>
+        </router>
+      </native>
+    </config>
+"""
+# 配置csr-1G1和L1的ospf
+CONFIG4 = """     <config>
+      <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+        <interface>
+          <GigabitEthernet>
+            <name>1</name>
+            <ip>
+              <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
+                <process-id>
+                  <id>1</id>
+                  <area>0</area>
+                </process-id>
+                <priority>100</priority>
+                <network>broadcast</network>
+              </ospf>
+            </ip>
+          </GigabitEthernet>
+          <Loopback>
+            <name>0</name>
+            <ip>
+              <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
+                <process-id>
+                  <id>1</id>
+                  <area>0</area>
+                </process-id>
+                <network>broadcast</network>
+                <priority>90</priority>
+                <network>point-to-point</network>
+              </ospf>
+            </ip>
+          </Loopback>
+        </interface>
+      </native>
+    </config>
+"""
+# 配置csr-2G1和L1的ospf
+CONFIG5 = """     <config>
+      <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+        <interface>
+          <GigabitEthernet>
+            <name>1</name>
+            <ip>
+              <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
+                <process-id>
+                  <id>1</id>
+                  <area>0</area>
+                </process-id>
+                <network>broadcast</network>
+                <priority>90</priority>
+                <network>broadcast</network>
+              </ospf>
+            </ip>
+          </GigabitEthernet>
+          <Loopback>
+            <name>0</name>
+            <ip>
+              <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
+                <process-id>
+                  <id>1</id>
+                  <area>0</area>
+                </process-id>
+                <network>point-to-point</network>
+              </ospf>
+            </ip>
+          </Loopback>
+        </interface>
+      </native>
+    </config>
 """
